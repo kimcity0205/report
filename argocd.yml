@@ -1,0 +1,33 @@
+---
+# svc-argo
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-argo
+spec:
+  selector:
+    app: argo
+  ports:
+  - port: 80
+    targetPort: 80
+
+---
+# dp-argo
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo
+spec:
+  selector:
+    matchLabels:
+      app: argo 
+  template:     
+    metadata:
+      labels:
+        app: argo
+    spec:
+      containers:
+      - name: argo
+        image: kimcity0205/report:image
+        ports:
+        - containerPort: 80
