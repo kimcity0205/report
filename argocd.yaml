@@ -31,3 +31,4 @@ spec:
         image: kimcity0205/report:image
         ports:
         - containerPort: 80
+        
